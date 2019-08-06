@@ -1,3 +1,3 @@
-class UserV1API < Grape::API
+class UserV1Api < Grape::API
 
 end
