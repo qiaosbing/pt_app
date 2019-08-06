@@ -32,6 +32,9 @@ gem 'grape', '0.17.0'
 gem 'grape-entity', '0.6.0'
 gem 'grape-swagger'
 
+#sidekiq
+gem 'sidekiq'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
