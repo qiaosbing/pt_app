@@ -6,6 +6,6 @@ class UserV1Api < Grape::API
     requires :user_pw, type: String, desc: "用户密码"
   end
   post '/' do
-
+    return {data:"滚！！！！"}
   end
 end
