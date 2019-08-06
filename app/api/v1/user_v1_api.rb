@@ -4,11 +4,11 @@ class UserV1Api < Grape::API
   params do
     requires :user_no, type: String, desc: "姓名"
   end
-  #  rails generate scaffold user_desc user_id:string user_name:string phone:string mailbox:string units:string remark:string
+  #用户表
+  #rails generate scaffold user_desc user_id:string user_name:string phone:string mailbox:string units:string remark:string
 
   post '/' do
     user_name = params[:user_no]
-    Rails.logger.info "========#{user_name}"
     return {data_arr: "滚犊子！！！！"} if !"乔帅兵".eql?(user_name)
 
     data_user = UserDesc.find_by(:user_name => user_name)
