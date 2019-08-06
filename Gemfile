@@ -27,6 +27,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# API接口Gem
+gem 'grape'
+gem 'grape-entity'
+gem 'grape-swagger'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
