@@ -1,5 +1,5 @@
 require 'grape'
-#require 'grape-swagger'
+require 'grape-swagger'
 
 class TestV1API < Grape::API
   format :json
