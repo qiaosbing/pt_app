@@ -34,6 +34,7 @@ gem 'grape-swagger'
 
 #sidekiq
 gem 'sidekiq'
+gem 'sinatra', '2.0.0.beta2',require: false
 
 
 # Use ActiveStorage variant
