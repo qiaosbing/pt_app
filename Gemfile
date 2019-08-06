@@ -28,8 +28,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # API接口Gem
-gem 'grape'
-gem 'grape-entity'
+gem 'grape', '0.17.0'
+gem 'grape-entity', '0.6.0'
 gem 'grape-swagger'
 
 # Use ActiveStorage variant
