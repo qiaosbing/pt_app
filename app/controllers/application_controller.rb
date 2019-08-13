@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  Rails.logger.info "=========走了"
+  def user_login
+    Rails.logger.info "========1111111111111"
+  end
 end
