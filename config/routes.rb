@@ -2,7 +2,6 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   resources :users
   resources :microposts
-  resources :user_descs
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   mount Sidekiq::Web => '/sidekiq_web' #sidekiq
