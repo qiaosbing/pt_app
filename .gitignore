@@ -26,4 +26,9 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-.idea
+.idea/*
+.keep
+.ruby-version
+Gemfile.lock
+vendor/ruby/
+Gemfile
