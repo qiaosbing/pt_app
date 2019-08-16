@@ -9,6 +9,8 @@ class SessionsController < ApplicationController
     user = params[:user]
     pwd = params[:pwd]
     Rails.logger.info "=====用户===#{user}=====密码==#{pwd}"
-    render "SUCCESS"
+    render json: {data:"SUCCESS"}, status: :ok, layout: false
+
+    #render "SUCCESS"
   end
 end
