@@ -1,6 +1,6 @@
 function login() {
 
-    var verifyUrl = "sessions/index_table";
+    var verifyUrl = "sessions/new";
     //var message = document.getElementById("message");
 
     var studentId = document.getElementsByName("user");
