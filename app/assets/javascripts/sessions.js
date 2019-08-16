@@ -1,4 +1,4 @@
-function login() {
+function but() {
     var studentId = document.getElementsByName("user");
     var password = document.getElementsByName("pwd");
     alert(studentId[0].value);
