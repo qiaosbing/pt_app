@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  def index
+  def index_tbale
 
   end
   #用户登录页面

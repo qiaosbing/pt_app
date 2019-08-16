@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   resources :users
   resources :microposts
-  resources :sessions #用户登录
+  resources :sessions do #用户登录
+    get "index_table", on: :collection
+  end
 
 
 end

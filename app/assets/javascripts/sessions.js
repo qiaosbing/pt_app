@@ -1,33 +1,44 @@
-// JavaScript Document
-//支持Enter键登录
-document.onkeydown = function(e){
-    if($(".bac").length==0)
-    {
-        if(!e) e = window.event;
-        if((e.keyCode || e.which) == 13){
-            var obtnLogin=document.getElementById("submit_btn")
-            obtnLogin.focus();
-        }
-    }
-}
+function login() {
 
-$(function(){
-    //提交表单
-    $('#submit_btn').click(function(){
-        show_loading();
-        var myReg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/; //邮件正则
-        if($('#email').val() == ''){
-            show_err_msg('邮箱还没填呢！');
-            $('#email').focus();
-        }else if(!myReg.test($('#email').val())){
-            show_err_msg('您的邮箱格式错咯！');
-            $('#email').focus();
-        }else if($('#password').val() == ''){
-            show_err_msg('密码还没填呢！');
-            $('#password').focus();
-        }else{
-            //ajax提交表单，#login_form为表单的ID。 如：$('#login_form').ajaxSubmit(function(data) { ... });
-            //show_msg('登录成功咯！  正在为您跳转...','/');
-        }
-    });
-});
+    var verifyUrl = "sessions/index_table";
+    //var message = document.getElementById("message");
+
+    var studentId = document.getElementsByName("user");
+    var password = document.getElementsByName("pwd");
+    alert(studentId[0].value);
+    alert(password[0].value);
+    var oError = "";
+    var isError = true;
+    if (studentId[0].value.length != 10) {
+        oError = "学号请输入10位字符";
+        isError = false;
+    }
+    if (password[0].value.length <= 0) {
+        oError = "密码不能为空！";
+        isError = false;
+    }
+    alert(verifyUrl);
+    if (isError) {
+        var params = {};
+        params.studentId = studentId[0].value;
+        params.password = password[0].value;
+        alert(params);
+        $.ajax({
+            type: 'post',
+            url: verifyUrl,
+            data: params,
+            datatype: 'josn',               //同步调用，保证先执行result=true,后再执行return result;
+            success: function (data) {
+                if (data.result == 'SUCCESS') {
+                    window.location.href = "/AYZXX-B/books/list";
+                    //弹出登录成功！
+                    alert("登陆成功！");
+                } else {
+                    alert("帐号错误，登陆失败！");
+                }
+            }
+        });
+    } else {
+        alert(oError);
+    }
+};
