@@ -16,14 +16,13 @@ function login() {
     alert(verifyUrl);
     if (isError) {
         $.ajax({
-            url: "/sessions/new",
-            type: 'post',
+            url: "/sessions/index_table",
+            type: 'get',
             user: studentId[0].value,
             pwd:  password[0].value,
             datatype: 'josn',               //同步调用，保证先执行result=true,后再执行return result;
             success: function (data) {
                 if (data.result == 'SUCCESS') {
-                    window.location.href = "/AYZXX-B/books/list";
                     //弹出登录成功！
                     alert("登陆成功！");
                 } else {
