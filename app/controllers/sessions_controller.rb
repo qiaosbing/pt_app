@@ -7,6 +7,6 @@ class SessionsController < ApplicationController
   #用户登录页面
   def new
 
-    render "登录成功"
+    #render "登录成功"
   end
 end
