@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
   #用户登录页面
   def new
-
+    params[:login_no]
     #render "登录成功"
   end
 end

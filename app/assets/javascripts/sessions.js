@@ -19,14 +19,11 @@ function login() {
     }
     alert(verifyUrl);
     if (isError) {
-        var params = {};
-        params.studentId = studentId[0].value;
-        params.password = password[0].value;
-        alert(params);
         $.ajax({
             type: 'post',
             url: verifyUrl,
-            data: params,
+            user: studentId[0].value,
+            pwd:  password[0].value,
             datatype: 'josn',               //同步调用，保证先执行result=true,后再执行return result;
             success: function (data) {
                 if (data.result == 'SUCCESS') {
