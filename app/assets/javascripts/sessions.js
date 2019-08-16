@@ -1,8 +1,4 @@
 function login() {
-
-    var verifyUrl = "sessions/new";
-    //var message = document.getElementById("message");
-
     var studentId = document.getElementsByName("user");
     var password = document.getElementsByName("pwd");
     alert(studentId[0].value);
@@ -20,8 +16,8 @@ function login() {
     alert(verifyUrl);
     if (isError) {
         $.ajax({
+            url: "/sessions/new",
             type: 'post',
-            url: verifyUrl,
             user: studentId[0].value,
             pwd:  password[0].value,
             datatype: 'josn',               //同步调用，保证先执行result=true,后再执行return result;
