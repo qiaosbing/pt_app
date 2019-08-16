@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  def index_tbale
+  def index_table
 
     render :partial => 'index_table', :layout => false
   end
