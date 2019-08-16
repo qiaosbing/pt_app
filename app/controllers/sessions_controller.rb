@@ -1,4 +1,4 @@
-class UserLoggerController < ApplicationController
+class SessionsController < ApplicationController
 
 
   #用户登录页面
