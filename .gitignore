@@ -31,6 +31,5 @@
 .ruby-version
 Gemfile.lock
 vendor/ruby/
-Gemfile
 /config/database.yml
 config/database.yml
