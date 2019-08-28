@@ -49,6 +49,7 @@ module ExecHelper
         iaqi_pm10 = SIaqiLimit.smooth_iaqi("ma24_pm10", aqi_pm10)
         iaqi_pm25 = SIaqiLimit.smooth_iaqi("ma24_pm25", aqi_pm25)
 
+        Rails.logger.info "=======#{avg_pm25}"
         #封装数据
         day_data << {station_id: station_id.id, station_name: station_name, data_time: data_time,
                      avg_so2: avg_so2, iaqi_so2: iaqi_so2.to_i, avg_no2: avg_no2, iaqi_no2: iaqi_no2.to_i,
