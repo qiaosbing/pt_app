@@ -42,40 +42,12 @@ module ExecHelper
         aqi_pm25 = avg_pm25
 
         #### iaqi 空气质量分指数
-        iaqi_so2 = SIaqiLimit.smooth_iaqi("ma24_so2", aqi_so2.to_i)
-        iaqi_no2 = SIaqiLimit.smooth_iaqi("ma24_no2", aqi_no2.to_i)
-        iaqi_co = SIaqiLimit.smooth_iaqi("ma24_co", aqi_co.to_i)
-        iaqi_ma8_o3 = SIaqiLimit.smooth_iaqi("o3", aqi_ma8_o3.to_i)
-        iaqi_pm10 = SIaqiLimit.smooth_iaqi("ma24_pm10", aqi_pm10.to_i)
-        iaqi_pm25 = SIaqiLimit.smooth_iaqi("ma24_pm25", aqi_pm25.to_i)
-
-        # #封装数据
-        # hash = {}
-        # hash[:station_id] == station_id.id
-        # hash[:station_name] == station_name
-        # hash[:avg_so2] == avg_so2
-        # hash[:iaqi_so2] == iaqi_so2
-        # hash[:avg_no2] == avg_no2
-        # hash[:iaqi_no2] == iaqi_no2
-        # hash[:avg_co] == avg_co
-        # hash[:iaqi_co] == station_id.id
-        # hash[:max_ma8_o3] == station_id.id
-        # hash[:iaqi_ma8_o3] == station_id.id
-        # hash[:avg_pm10] == station_id.id
-        # hash[:iaqi_pm10] == station_id.id
-        # hash[:avg_pm25] == station_id.id
-        # hash[:iaqi_pm25] == station_id.id
-        # hash[:aqi_level] == station_id.id
-        # hash[:aqi_class] == station_id.id
-        # hash[:aqi_color] == station_id.id
-        # hash[:chief_pollutant] == station_id.id
-        # hash[:so2_label] == station_id.id
-        # hash[:no2_label] == station_id.id
-        # hash[:co_label] == station_id.id
-        # hash[:pm25_label] == station_id.id
-        # hash[:pm10_label] == station_id.id
-
-        Rails.logger.info "=======#{row[7]}=====#{avg_co}"
+        iaqi_so2 = aqi_so2 == nil ? nil : SIaqiLimit.smooth_iaqi("ma24_so2", aqi_so2.to_i)
+        iaqi_no2 = iaqi_no2 == nil ? nil :  SIaqiLimit.smooth_iaqi("ma24_no2", aqi_no2.to_i)
+        iaqi_co = iaqi_co == nil ? nil :  SIaqiLimit.smooth_iaqi("ma24_co", aqi_co.to_i)
+        iaqi_ma8_o3 = iaqi_ma8_o3 == nil ? nil :  SIaqiLimit.smooth_iaqi("o3", aqi_ma8_o3.to_i)
+        iaqi_pm10 = iaqi_pm10 == nil ? nil :  SIaqiLimit.smooth_iaqi("ma24_pm10", aqi_pm10.to_i)
+        iaqi_pm25 = iaqi_pm25 == nil ? nil :  SIaqiLimit.smooth_iaqi("ma24_pm25", aqi_pm25.to_i)
 
         day_data << {station_id: station_id.id, station_name: station_name, data_time: data_time,
                      avg_so2: avg_so2, iaqi_so2: iaqi_so2, avg_no2: avg_no2, iaqi_no2: iaqi_no2,
