@@ -6,13 +6,18 @@ module ExecHelper
     book = Spreadsheet.open "#{Rails.root}/public/ceshi.xls"
     sheet1 = book.worksheet 0
     day_data = []
+    yc_data = []
     sheet1.each do |row|
-      Rails.logger.info "===时间===#{row[0]}"
+      Rails.logger.info "==站点#{row[12]}=时间===#{row[0]}"
       if row[0].include? "日"
         time =  (row[0].to_s).delete("年月日") #删除年月日
         data_time = Time.parse(time).strftime("%Y%m%d")
       else
-        data_time = Time.parse(row[0].to_s).strftime("%Y%m%d%H")
+        hash = {}
+        hash[:station_name] = row[12]
+        hash[:data_time] = row[0]
+        yc_data << hash
+        next
       end
 
 
@@ -71,13 +76,13 @@ module ExecHelper
     end
     Rails.logger.info "======测试数据====#{day_data.inspect}"
     #审核日报表插入
-    if day_data.present?
-      DAuditDataDailie.bulk_insert(update_duplicates: true) do |day|
-        day_data.each do |d|
-          day.add(d)
-        end
-      end
-    end
+    # if day_data.present?
+    #   DAuditDataDailie.bulk_insert(update_duplicates: true) do |day|
+    #     day_data.each do |d|
+    #       day.add(d)
+    #     end
+    #   end
+    # end
 
     # #日报表插入
     # if day_data.present?
