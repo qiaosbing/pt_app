@@ -28,10 +28,17 @@ module ExecHelper
         avg_pm25 = row[9].to_s == "—" ? nil : row[9]
         aqi = row[10].to_s == "—" ? nil : row[10]
 
-        aqi_color = SAqiLevel.find_by_aqi(aqi).aqi_color #污染等级颜色
-        chief_pollutant = row[11] #首要污染物
-        aqi_level = s_aqi_level(row[12]) #污染等级
-        aqi_class = row[13] #污染程度
+        if !aqi.present?
+          aqi_color = SAqiLevel.find_by_aqi(aqi).aqi_color #污染等级颜色
+          chief_pollutant = row[11] #首要污染物
+          aqi_level = s_aqi_level(row[12]) #污染等级
+          aqi_class = row[13] #污染程度
+        else
+          aqi_color = nil
+          chief_pollutant = nil
+          aqi_level = nil
+          aqi_class = nil
+        end
 
         #转换因子值，因子从表格中获取的因子为字符串
         aqi_so2 = avg_so2
