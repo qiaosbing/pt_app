@@ -3,7 +3,7 @@ module ExecHelper
   # ExecHelper.zm_read()
   def self.zm_read()
     Spreadsheet.client_encoding = "UTF-8"
-    book = Spreadsheet.open "#{Rails.root}/public/yaojiazhen.xls"
+    book = Spreadsheet.open "#{Rails.root}/public/ceshi.xls"
     sheet1 = book.worksheet 0
     day_data = []
     sheet1.each do |row|
