@@ -32,6 +32,9 @@ gem 'grape', '0.17.0'
 gem 'grape-entity', '0.6.0'
 gem 'grape-swagger'
 
+#解析表格Gem
+gem 'spreadsheet'
+
 #sidekiq
 gem 'sidekiq'
 gem 'sinatra', '2.0.0.beta2',require: false

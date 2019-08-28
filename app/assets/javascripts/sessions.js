@@ -1,4 +1,4 @@
-function but() {
+function login() {
     var studentId = document.getElementsByName("user");
     var password = document.getElementsByName("pwd");
     alert(studentId[0].value);
@@ -13,7 +13,6 @@ function but() {
         oError = "密码不能为空！";
         isError = false;
     }
-    alert(verifyUrl);
     if (isError) {
         $.ajax({
             url: "/sessions/index_table",
