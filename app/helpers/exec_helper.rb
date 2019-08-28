@@ -4,7 +4,7 @@ module ExecHelper
   def self.zm_read()
     Spreadsheet.client_encoding = "UTF-8"
     book = Spreadsheet.open "#{Rails.root}/public/yuanshi.xls"
-    sheet1 = book.worksheet 2
+    sheet1 = book.worksheet 0
     day_data = []
     sheet1.each do |row|
       if row[3].include? "日"
