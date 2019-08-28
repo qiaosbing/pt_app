@@ -9,7 +9,7 @@ module ExecHelper
     day_data = []
     sheet1.each do |row|
       station_name = row[2].gsub("中牟县", "") #站点名称，去除中牟县，只留站点名称
-      station_id = DStation.find_by(:station_name => station_name)#获取站点ID
+      station_id = DStation.find_by(:station_name => station_name) #获取站点ID
       if station_id.present?
         #解析时间
         if row[3].include? "日"
@@ -28,17 +28,10 @@ module ExecHelper
         avg_pm25 = row[9].to_s == "—" ? nil : row[9]
         aqi = row[10].to_s == "—" ? nil : row[10]
 
-        if !aqi.present?
-          aqi_color = SAqiLevel.find_by_aqi(aqi).aqi_color #污染等级颜色
-          chief_pollutant = row[11] #首要污染物
-          aqi_level = s_aqi_level(row[12]) #污染等级
-          aqi_class = row[13] #污染程度
-        else
-          aqi_color = nil
-          chief_pollutant = nil
-          aqi_level = nil
-          aqi_class = nil
-        end
+        chief_pollutant = row[11].to_s == "—" ? nil : row[11] #首要污染物
+        aqi_class = row[13].to_s == "—" ? nil : row[13] #污染程度
+        aqi_color = aqi == nil ? nil : SAqiLevel.find_by_aqi(aqi).aqi_color #污染等级颜色
+        aqi_level = row[12].to_s == "—" ? nil : s_aqi_level(row[12]) #污染等级
 
         #转换因子值，因子从表格中获取的因子为字符串
         aqi_so2 = avg_so2
