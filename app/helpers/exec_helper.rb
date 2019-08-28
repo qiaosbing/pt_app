@@ -71,13 +71,13 @@ module ExecHelper
                    co_label: data_s(avg_co), pm25_label: data_s(avg_pm25), pm10_label: data_s(avg_pm10)}
     end
     # #审核日报表插入
-    # if day_data.present?
-    #   DAuditDataDailie.bulk_insert(update_duplicates: true) do |day|
-    #     day_data.each do |d|
-    #       day.add(d)
-    #     end
-    #   end
-    # end
+    if day_data.present?
+      DAuditDataDailie.bulk_insert(update_duplicates: true) do |day|
+        day_data.each do |d|
+          day.add(d)
+        end
+      end
+    end
 
     # #日报表插入
     # if day_data.present?
