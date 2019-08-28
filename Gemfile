@@ -39,6 +39,9 @@ gem 'spreadsheet'
 gem 'sidekiq'
 gem 'sinatra', '2.0.0.beta2',require: false
 
+#批量插入数据
+gem 'bulk_insert'
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
