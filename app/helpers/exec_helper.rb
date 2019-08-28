@@ -20,13 +20,13 @@ module ExecHelper
         end
 
         #解析因子数据
-        avg_so2 = row[4] == "-" ? nil : row[4]
-        avg_no2 = row[5] == "-" ? nil : row[5]
-        avg_pm10 = row[6] == "-" ? nil : row[6]
-        avg_co = row[7] == "-" ? nil : row[7]
-        max_ma8_o3 = row[8] == "-" ? nil : row[8]
-        avg_pm25 = row[9] == "-" ? nil : row[9]
-        aqi = row[10] == "-" ? nil : row[10]
+        avg_so2 = row[4].to_s == "-" ? nil : row[4]
+        avg_no2 = row[5].to_s == "-" ? nil : row[5]
+        avg_pm10 = row[6].to_s == "-" ? nil : row[6]
+        avg_co = row[7].to_s == "-" ? nil : row[7]
+        max_ma8_o3 = row[8].to_s == "-" ? nil : row[8]
+        avg_pm25 = row[9].to_s == "-" ? nil : row[9]
+        aqi = row[10].to_s == "-" ? nil : row[10]
 
         aqi_color = SAqiLevel.find_by_aqi(aqi).aqi_color #污染等级颜色
         chief_pollutant = row[11] #首要污染物
@@ -49,7 +49,7 @@ module ExecHelper
         iaqi_pm10 = SIaqiLimit.smooth_iaqi("ma24_pm10", aqi_pm10.to_i)
         iaqi_pm25 = SIaqiLimit.smooth_iaqi("ma24_pm25", aqi_pm25.to_i)
 
-        Rails.logger.info "====#{row[8]}===#{max_ma8_o3}"
+        Rails.logger.info "====#{row[7]}===#{avg_co}"
         #封装数据
         day_data << {station_id: station_id.id, station_name: station_name, data_time: data_time,
                      avg_so2: avg_so2, iaqi_so2: iaqi_so2, avg_no2: avg_no2, iaqi_no2: iaqi_no2,
