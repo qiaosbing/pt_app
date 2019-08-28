@@ -34,28 +34,28 @@ module ExecHelper
         aqi_class = row[13] #污染程度
 
         #转换因子值，因子从表格中获取的因子为字符串
-        aqi_so2 = avg_so2.to_i
-        aqi_no2 = avg_no2.to_i
-        aqi_co = avg_co.to_i
-        aqi_ma8_o3 = max_ma8_o3.to_i
-        aqi_pm10 = avg_pm10.to_i
-        aqi_pm25 = avg_pm25.to_i
+        aqi_so2 = avg_so2
+        aqi_no2 = avg_no2
+        aqi_co = avg_co
+        aqi_ma8_o3 = max_ma8_o3
+        aqi_pm10 = avg_pm10
+        aqi_pm25 = avg_pm25
 
         #### iaqi 空气质量分指数
-        iaqi_so2 = SIaqiLimit.smooth_iaqi("ma24_so2", aqi_so2)
-        iaqi_no2 = SIaqiLimit.smooth_iaqi("ma24_no2", aqi_no2)
-        iaqi_co = SIaqiLimit.smooth_iaqi("ma24_co", aqi_co)
-        iaqi_ma8_o3 = SIaqiLimit.smooth_iaqi("o3", aqi_ma8_o3)
-        iaqi_pm10 = SIaqiLimit.smooth_iaqi("ma24_pm10", aqi_pm10)
-        iaqi_pm25 = SIaqiLimit.smooth_iaqi("ma24_pm25", aqi_pm25)
+        iaqi_so2 = SIaqiLimit.smooth_iaqi("ma24_so2", aqi_so2.to_i)
+        iaqi_no2 = SIaqiLimit.smooth_iaqi("ma24_no2", aqi_no2.to_i)
+        iaqi_co = SIaqiLimit.smooth_iaqi("ma24_co", aqi_co.to_i)
+        iaqi_ma8_o3 = SIaqiLimit.smooth_iaqi("o3", aqi_ma8_o3.to_i)
+        iaqi_pm10 = SIaqiLimit.smooth_iaqi("ma24_pm10", aqi_pm10.to_i)
+        iaqi_pm25 = SIaqiLimit.smooth_iaqi("ma24_pm25", aqi_pm25.to_i)
 
-        Rails.logger.info "=======#{iaqi_ma8_o3}"
+        Rails.logger.info "=======#{max_ma8_o3}"
         #封装数据
         day_data << {station_id: station_id.id, station_name: station_name, data_time: data_time,
-                     avg_so2: avg_so2, iaqi_so2: iaqi_so2.to_i, avg_no2: avg_no2, iaqi_no2: iaqi_no2.to_i,
-                     avg_co: avg_co, iaqi_co: iaqi_co.to_i, max_ma8_o3: max_ma8_o3, iaqi_ma8_o3: iaqi_ma8_o3.to_i,
-                     avg_pm10: avg_pm10, iaqi_pm10: iaqi_pm10.to_i, avg_pm25: avg_pm25,
-                     iaqi_pm25: iaqi_pm25.to_i, aqi: aqi.to_i, aqi_level: aqi_level, aqi_class: aqi_class,
+                     avg_so2: avg_so2, iaqi_so2: iaqi_so2, avg_no2: avg_no2, iaqi_no2: iaqi_no2,
+                     avg_co: avg_co, iaqi_co: iaqi_co.to_i, max_ma8_o3: max_ma8_o3, iaqi_ma8_o3: iaqi_ma8_o3,
+                     avg_pm10: avg_pm10, iaqi_pm10: iaqi_pm10, avg_pm25: avg_pm25,
+                     iaqi_pm25: iaqi_pm25.to_i, aqi: aqi, aqi_level: aqi_level, aqi_class: aqi_class,
                      aqi_color: aqi_color, chief_pollutant: chief_pollutant, so2_label: data_s(avg_so2), no2_label: data_s(avg_no2),
                      co_label: data_s(avg_co), pm25_label: data_s(avg_pm25), pm10_label: data_s(avg_pm10)}
       end
