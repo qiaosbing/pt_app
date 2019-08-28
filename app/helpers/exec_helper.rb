@@ -71,13 +71,13 @@ module ExecHelper
     end
     Rails.logger.info "======测试数据====#{day_data.inspect}"
     #审核日报表插入
-    # if day_data.present?
-    #   DAuditDataDailie.bulk_insert(update_duplicates: true) do |day|
-    #     day_data.each do |d|
-    #       day.add(d)
-    #     end
-    #   end
-    # end
+    if day_data.present?
+      DAuditDataDailie.bulk_insert(update_duplicates: true) do |day|
+        day_data.each do |d|
+          day.add(d)
+        end
+      end
+    end
 
     # #日报表插入
     # if day_data.present?
