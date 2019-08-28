@@ -20,13 +20,13 @@ module ExecHelper
         end
 
         #解析因子数据
-        avg_so2 = row[4].to_s == "-" ? nil : row[4]
-        avg_no2 = row[5].to_s == "-" ? nil : row[5]
-        avg_pm10 = row[6].to_s == "-" ? nil : row[6]
-        avg_co = row[7].to_s == "-" ? nil : row[7]
-        max_ma8_o3 = row[8].to_s == "-" ? nil : row[8]
-        avg_pm25 = row[9].to_s == "-" ? nil : row[9]
-        aqi = row[10].to_s == "-" ? nil : row[10]
+        avg_so2 = row[4].to_s == "—" ? nil : row[4]
+        avg_no2 = row[5].to_s == "—" ? nil : row[5]
+        avg_pm10 = row[6].to_s == "—" ? nil : row[6]
+        avg_co = row[7].to_s == "—" ? nil : row[7]
+        max_ma8_o3 = row[8].to_s == "—" ? nil : row[8]
+        avg_pm25 = row[9].to_s == "—" ? nil : row[9]
+        aqi = row[10].to_s == "—" ? nil : row[10]
 
         aqi_color = SAqiLevel.find_by_aqi(aqi).aqi_color #污染等级颜色
         chief_pollutant = row[11] #首要污染物
@@ -49,8 +49,34 @@ module ExecHelper
         iaqi_pm10 = SIaqiLimit.smooth_iaqi("ma24_pm10", aqi_pm10.to_i)
         iaqi_pm25 = SIaqiLimit.smooth_iaqi("ma24_pm25", aqi_pm25.to_i)
 
-        Rails.logger.info "====#{row[7]}===#{avg_co}"
-        #封装数据
+        # #封装数据
+        # hash = {}
+        # hash[:station_id] == station_id.id
+        # hash[:station_name] == station_name
+        # hash[:avg_so2] == avg_so2
+        # hash[:iaqi_so2] == iaqi_so2
+        # hash[:avg_no2] == avg_no2
+        # hash[:iaqi_no2] == iaqi_no2
+        # hash[:avg_co] == avg_co
+        # hash[:iaqi_co] == station_id.id
+        # hash[:max_ma8_o3] == station_id.id
+        # hash[:iaqi_ma8_o3] == station_id.id
+        # hash[:avg_pm10] == station_id.id
+        # hash[:iaqi_pm10] == station_id.id
+        # hash[:avg_pm25] == station_id.id
+        # hash[:iaqi_pm25] == station_id.id
+        # hash[:aqi_level] == station_id.id
+        # hash[:aqi_class] == station_id.id
+        # hash[:aqi_color] == station_id.id
+        # hash[:chief_pollutant] == station_id.id
+        # hash[:so2_label] == station_id.id
+        # hash[:no2_label] == station_id.id
+        # hash[:co_label] == station_id.id
+        # hash[:pm25_label] == station_id.id
+        # hash[:pm10_label] == station_id.id
+
+        Rails.logger.info "=======#{row[7]}=====#{avg_co}"
+
         day_data << {station_id: station_id.id, station_name: station_name, data_time: data_time,
                      avg_so2: avg_so2, iaqi_so2: iaqi_so2, avg_no2: avg_no2, iaqi_no2: iaqi_no2,
                      avg_co: avg_co, iaqi_co: iaqi_co.to_i, max_ma8_o3: max_ma8_o3, iaqi_ma8_o3: iaqi_ma8_o3,
