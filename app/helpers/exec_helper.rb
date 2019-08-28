@@ -9,7 +9,7 @@ module ExecHelper
     day_data = []
     sheet1.each do |row|
       station_name = row[2].gsub("中牟县", "") #站点名称，去除中牟县，只留站点名称
-      station_id = DStation.find_by(:station_name => station_name).id #获取站点ID
+      station_id = DStation.find_by(:station_name => station_name)#获取站点ID
       if station_id.present?
         #解析时间
         if row[3].include? "日"
@@ -50,7 +50,7 @@ module ExecHelper
         iaqi_pm25 = SIaqiLimit.smooth_iaqi("ma24_pm25", aqi_pm25)
 
         #封装数据
-        day_data << {station_id: station_id, station_name: station_name, data_time: data_time,
+        day_data << {station_id: station_id.id, station_name: station_name, data_time: data_time,
                      avg_so2: avg_so2, iaqi_so2: iaqi_so2.to_i, avg_no2: avg_no2, iaqi_no2: iaqi_no2.to_i,
                      avg_co: avg_co, iaqi_co: iaqi_co.to_i, max_ma8_o3: max_ma8_o3, iaqi_ma8_o3: iaqi_ma8_o3.to_i,
                      avg_pm10: avg_pm10, iaqi_pm10: iaqi_pm10.to_i, avg_pm25: avg_pm25,
