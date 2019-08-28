@@ -1,0 +1,2 @@
+class DAuditDataDailie < ApplicationRecord
+end
