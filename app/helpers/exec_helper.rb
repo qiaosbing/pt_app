@@ -39,6 +39,7 @@ module ExecHelper
 
         #转换因子值，因子从表格中获取的因子为字符串
         Rails.logger.info "===========#{avg_co}"
+        Rails.logger.info "===========#{avg_no2}"
         aqi_so2 = avg_so2
         aqi_no2 = avg_no2
         aqi_co = avg_co
