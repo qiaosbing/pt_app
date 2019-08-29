@@ -48,9 +48,9 @@ module ExecHelper
         aqi_pm25 = avg_pm25
 
         #### iaqi 空气质量分指数
-        iaqi_so2 = aqi_so2 == nil ? nil : SIaqiLimit.smooth_iaqi("ma24_so2", aqi_so2.to_i)
-        iaqi_no2 = aqi_no2 == nil ? nil : SIaqiLimit.smooth_iaqi("ma24_no2", aqi_no2.to_i)
-        iaqi_co = aqi_co == nil ? nil : SIaqiLimit.smooth_iaqi("ma24_co", aqi_co.to_i)
+        iaqi_so2 = aqi_so2 == nil ? nil : SIaqiLimit.smooth_iaqi("so2", aqi_so2.to_i)
+        iaqi_no2 = aqi_no2 == nil ? nil : SIaqiLimit.smooth_iaqi("no2", aqi_no2.to_i)
+        iaqi_co = aqi_co == nil ? nil : SIaqiLimit.smooth_iaqi("co", aqi_co.to_i)
         iaqi_ma8_o3 = aqi_ma8_o3 == nil ? nil : SIaqiLimit.smooth_iaqi("o3", aqi_ma8_o3.to_i)
         iaqi_pm10 = aqi_pm10 == nil ? nil : SIaqiLimit.smooth_iaqi("ma24_pm10", aqi_pm10.to_i)
         iaqi_pm25 = aqi_pm25 == nil ? nil : SIaqiLimit.smooth_iaqi("ma24_pm25", aqi_pm25.to_i)
