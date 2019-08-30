@@ -5,13 +5,8 @@ class KafkaJob < ActiveJob::Base
     Rails.logger.info "==kafka测试==="
     Rails.logger.info "==链接topic#{Kafka}==="
 
-    host = 'localhost'
-    port = 9092
-    kafka = Kafka.new(
-        :topic => 'test',
-        :host => host,
-        :port => port
-    )
+    kafka = Kafka.new(["kafka1:9092", "kafka2:9092"], client_id: "my-application")
+
     Rails.logger.info "==链接topic#{kafka}==="
     kafka.deliver_message("Hello, World!", topic: "test")
 
