@@ -44,6 +44,7 @@ gem 'bulk_insert'
 
 #kafka
 gem 'ruby-kafka', '~> 0.1.0.pre.beta3'
+gem 'kafka_replicator'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
