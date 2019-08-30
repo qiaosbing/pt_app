@@ -5,13 +5,20 @@ class KafkaJob < ActiveJob::Base
     Rails.logger.info "==kafka测试==="
     host = 'localhost'
     port = 9092
-    producer = Kafka::Producer.new(
-
+    kafka = Kafka.new(
         :topic => 'test',
         :host => host,
         :port => port
     )
-    Rails.logger.info "==链接topic#{producer}==="
-    producer.send([Kafka::Message.new("aaaaa")])
+    Rails.logger.info "==链接topic#{kafka}==="
+    kafka.deliver_message("Hello, World!", topic: "test")
+
+    # producer = Kafka::Producer.new(
+    #     :topic => 'test',
+    #     :host => host,
+    #     :port => port
+    # )
+    #
+    # producer.send([Kafka::Message.new("aaaaa")])
   end
 end
