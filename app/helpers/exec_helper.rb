@@ -1,5 +1,5 @@
 module ExecHelper
-  #qiaosbing 2019.8.20 导入日报表格数据，生成日  报
+  #qiaosbing 2019.8.20 导入日报表格数据，生成日报
   # ExecHelper.zm_read()
   def self.zm_read(data_type)
     Spreadsheet.client_encoding = "UTF-8"
@@ -38,8 +38,6 @@ module ExecHelper
         aqi_level = row[12].to_s == "—" ? nil : s_aqi_level(row[12]) #污染等级
 
         #转换因子值，因子从表格中获取的因子为字符串
-        Rails.logger.info "===========#{avg_co}"
-        Rails.logger.info "===========#{avg_no2}"
         aqi_so2 = avg_so2
         aqi_no2 = avg_no2
         aqi_co = avg_co

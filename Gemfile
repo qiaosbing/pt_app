@@ -42,6 +42,8 @@ gem 'sinatra', '2.0.0.beta2',require: false
 #批量插入数据
 gem 'bulk_insert'
 
+#kafka
+gem 'ruby-kafka', '~> 0.1.0.pre.beta3'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
