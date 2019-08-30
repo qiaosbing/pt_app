@@ -3,6 +3,8 @@ class KafkaJob < ActiveJob::Base
 
   def perform(*args)
     Rails.logger.info "==kafka测试==="
+    Rails.logger.info "==链接topic#{Kafka}==="
+
     host = 'localhost'
     port = 9092
     kafka = Kafka.new(
