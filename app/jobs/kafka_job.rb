@@ -8,6 +8,7 @@ class KafkaJob < ActiveJob::Base
 
     #实例化一个新的生产者。
     producer = kafka.producer
+    Rails.logger.info "==新的生产者：#{producer.inspect}==="
     #将消息添加到生成器缓冲区。
     producer.produce("hello1", topic: "test")
     #将消息发送给Kafka。
