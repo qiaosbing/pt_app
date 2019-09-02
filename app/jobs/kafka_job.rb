@@ -8,6 +8,7 @@ class KafkaJob < ActiveJob::Base
         amount: "2",
         timestamp: "3",
     }
+    Rails.logger.info "==kafka测试==#{$kafka_producer.inspect}="
     $kafka_producer.produce(event.to_json, topic: "test")
   end
 end
