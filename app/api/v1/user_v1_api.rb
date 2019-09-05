@@ -27,7 +27,13 @@ class UserV1Api < Grape::API
   end
   get '/' do
     data = $redis.get("hash");
-    Rails.logger.info "=====#{data.inspect}"
+    datas = eval(data)
+    Rails.logger.info "==接收到的数据===#{datas.inspect}"
+    datas = datas["hash"]
+    datas.each do |da|
+      Rails.logger.info "==循环数据===#{da.inspect}"
+    end
+
   end
 
 end
