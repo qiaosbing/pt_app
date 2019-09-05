@@ -26,7 +26,7 @@ class UserV1Api < Grape::API
   params do
   end
   get '/' do
-    data = $redis.git("hash");
+    data = $redis.get("hash");
     Rails.logger.info "=====#{data.inspect}"
   end
 
