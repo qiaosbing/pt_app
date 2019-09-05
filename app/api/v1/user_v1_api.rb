@@ -21,4 +21,12 @@ class UserV1Api < Grape::API
 
     return hash
   end
+
+
+  params do
+  end
+  get '/' do
+    return $redis;
+  end
+
 end
