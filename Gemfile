@@ -45,6 +45,9 @@ gem 'bulk_insert'
 #kafka
 gem 'kafka_replicator'
 
+#redis连接
+gem 'redis'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
