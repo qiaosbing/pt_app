@@ -28,17 +28,15 @@ class UserV1Api < Grape::API
   get '/' do
     data = $redis.get("hash");
     datas = eval(data)
-    Rails.logger.info "==接收到的数据===#{datas.inspect}"
     datas = datas["hash"]
     datas.each do |da|
-      Rails.logger.info "==循环数据===#{da.inspect}"
     end
   end
 
   params do
     requires :data, type: String, desc: "数据"
   end
-  get '/data' do
+  puts '/data' do
     data = params[:data]
     Rails.logger.info "==接收到的数据===#{data.inspect}"
   end
