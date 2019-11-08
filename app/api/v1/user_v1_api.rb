@@ -33,7 +33,14 @@ class UserV1Api < Grape::API
     datas.each do |da|
       Rails.logger.info "==循环数据===#{da.inspect}"
     end
+  end
 
+  params do
+    requires :data, type: String, desc: "数据"
+  end
+  get '/data' do
+    data = params[:data]
+    Rails.logger.info "==接收到的数据===#{data.inspect}"
   end
 
 end
