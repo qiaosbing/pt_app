@@ -41,6 +41,14 @@ class UserV1Api < Grape::API
     Rails.logger.info "==接收到的数据===#{data.inspect}"
   end
 
+  params do
+    requires :data, type: String, desc: "数据"
+  end
+  puts '/ceshi' do
+    data = params[:data]
+    Rails.logger.info "==接收到的数据===#{data.inspect}"
+  end
+
 end
 
 
