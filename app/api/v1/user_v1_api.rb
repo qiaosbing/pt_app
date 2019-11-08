@@ -9,17 +9,18 @@ class UserV1Api < Grape::API
 
   post '/' do
     user_name = params[:user_no]
-    return {data_arr: "滚犊子！！！！"} if !"乔帅兵".eql?(user_name)
-
-    data_user = UserDesc.find_by(:user_name => user_name)
-    hash = {}
-    hash[:user_name] = data_user.user_name
-    hash[:phone] = data_user.phone
-    hash[:mailbox] = data_user.mailbox
-    hash[:units] = data_user.units
-    hash[:remark] = data_user.remark
-
-    return hash
+    Rails.logger.info "=====#{user_name.inspect}"
+    # return {data_arr: "滚犊子！！！！"} if !"乔帅兵".eql?(user_name)
+    #
+    # data_user = UserDesc.find_by(:user_name => user_name)
+    # hash = {}
+    # hash[:user_name] = data_user.user_name
+    # hash[:phone] = data_user.phone
+    # hash[:mailbox] = data_user.mailbox
+    # hash[:units] = data_user.units
+    # hash[:remark] = data_user.remark
+    #
+    # return hash
   end
 
 
@@ -31,22 +32,6 @@ class UserV1Api < Grape::API
     datas = datas["hash"]
     datas.each do |da|
     end
-  end
-
-  params do
-    requires :data, type: String, desc: "数据"
-  end
-  puts '/data' do
-    data = params[:data]
-    Rails.logger.info "==接收到的数据===#{data.inspect}"
-  end
-
-  params do
-    requires :data, type: String, desc: "数据"
-  end
-  get '/ceshi' do
-    data = params[:data]
-    Rails.logger.info "==接收到的数据===#{data.inspect}"
   end
 
 end
