@@ -1,2 +1,0 @@
-class DAuditDataDailie < ApplicationRecord
-end
