@@ -2,25 +2,20 @@ class UserV1Api < Grape::API
   format :json
 
   params do
-    requires :user_no, type: String, desc: "姓名"
+    requires :user_no, type: String, desc: "用户名"
+    requires :user_pwd, type: String, desc: "密码"
   end
   #用户表
   #rails generate scaffold user_desc user_id:string user_name:string phone:string mailbox:string units:string remark:string
 
   post '/' do
     user_name = params[:user_no]
-    Rails.logger.info "=====#{user_name.inspect}"
-    # return {data_arr: "滚犊子！！！！"} if !"乔帅兵".eql?(user_name)
-    #
-    # data_user = UserDesc.find_by(:user_name => user_name)
-    # hash = {}
-    # hash[:user_name] = data_user.user_name
-    # hash[:phone] = data_user.phone
-    # hash[:mailbox] = data_user.mailbox
-    # hash[:units] = data_user.units
-    # hash[:remark] = data_user.remark
-    #
-    # return hash
+    user_pwd = params[:user_pwd]
+    return {data_arr: "滚犊子！！！！"} if !user_name.present? || !user_pwd.present?
+
+    data_user = UserDesc.find_by("user_name = #{user_name} and user_pwd = #{user_pwd}")
+    return data_user
+    return hash
   end
 
 
