@@ -7,6 +7,6 @@ class DbModelsJob < ActiveJob::Base
     DStation.find_each(start: 6000) do |a|
       @data_arr << a.id
     end
-    Rals.logger.info "=====#{@data_arr.inspect}"
+    Rails.logger.info "=====#{@data_arr.inspect}"
   end
 end
