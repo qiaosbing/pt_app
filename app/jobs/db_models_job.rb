@@ -3,14 +3,10 @@ class DbModelsJob < ActiveJob::Base
 
   def perform(*args)
 
-
-    DStation.all.each do |a|
-
+    @data_arr = []
+    DStation.find_each(start: 6000) do |a|
+      @data_arr << a.id
     end
-
-    # DStation.find_each do |a|
-    #
-    # end
-
+    Rals.logger.info "=====#{@data_arr.inspect}"
   end
 end
