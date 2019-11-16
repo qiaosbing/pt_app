@@ -13,7 +13,7 @@ class UserV1Api < Grape::API
     user_pwd = params[:user_pwd]
     return {data_arr: "滚犊子！！！！"} if !user_name.present? || !user_pwd.present?
 
-    data_user = UserDesc.find_by("user_name = #{user_name} and user_pwd = #{user_pwd}")
+    data_user = User.find_by("user_name = #{user_name} and user_pwd = #{user_pwd}")
     return data_user
     return hash
   end
