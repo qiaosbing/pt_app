@@ -16,11 +16,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create user" do
-    assert_difference('User.count') do
+    assert_difference('Users.count') do
       post users_url, params: { user: { email: @user.email, name: @user.name } }
     end
 
-    assert_redirected_to user_url(User.last)
+    assert_redirected_to user_url(Users.last)
   end
 
   test "should show user" do
@@ -39,7 +39,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy user" do
-    assert_difference('User.count', -1) do
+    assert_difference('Users.count', -1) do
       delete user_url(@user)
     end
 

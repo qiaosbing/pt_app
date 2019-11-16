@@ -10,36 +10,36 @@ class UsersTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Users"
   end
 
-  test "creating a User" do
+  test "creating a Users" do
     visit users_url
-    click_on "New User"
+    click_on "New Users"
 
     fill_in "Email", with: @user.email
     fill_in "Name", with: @user.name
-    click_on "Create User"
+    click_on "Create Users"
 
-    assert_text "User was successfully created"
+    assert_text "Users was successfully created"
     click_on "Back"
   end
 
-  test "updating a User" do
+  test "updating a Users" do
     visit users_url
     click_on "Edit", match: :first
 
     fill_in "Email", with: @user.email
     fill_in "Name", with: @user.name
-    click_on "Update User"
+    click_on "Update Users"
 
-    assert_text "User was successfully updated"
+    assert_text "Users was successfully updated"
     click_on "Back"
   end
 
-  test "destroying a User" do
+  test "destroying a Users" do
     visit users_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
 
-    assert_text "User was successfully destroyed"
+    assert_text "Users was successfully destroyed"
   end
 end

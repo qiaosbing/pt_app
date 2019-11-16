@@ -21309,7 +21309,7 @@ exports.set = function(field, val){
  * Example:
  *
  *      req.get('/')
- *        .unset('User-Agent')
+ *        .unset('Users-Agent')
  *        .end(callback);
  *
  * @param {String} field
