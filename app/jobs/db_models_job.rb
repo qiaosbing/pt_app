@@ -8,9 +8,9 @@ class DbModelsJob < ActiveJob::Base
 
     end
 
-    DStation.find_each do |a|
-
-    end
+    # DStation.find_each do |a|
+    #
+    # end
 
   end
 end
