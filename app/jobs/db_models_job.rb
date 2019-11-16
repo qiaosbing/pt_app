@@ -1,4 +1,4 @@
-class DbMondelsJob < ActiveJob::Base
+class DbModelsJob < ActiveJob::Base
 
 
   def perform(*args)
