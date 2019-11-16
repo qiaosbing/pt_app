@@ -1,34 +1,34 @@
-class UsersController < ApplicationController
+class UserController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /users
-  # GET /users.json
+  # GET /User
+  # GET /User.json
   def index
-    @users = Users.all
+    @user = User.all
   end
 
-  # GET /users/1
-  # GET /users/1.json
+  # GET /User/1
+  # GET /User/1.json
   def show
   end
 
-  # GET /users/new
+  # GET /User/new
   def new
-    @user = Users.new
+    @user = User.new
   end
 
-  # GET /users/1/edit
+  # GET /User/1/edit
   def edit
   end
 
-  # POST /users
-  # POST /users.json
+  # POST /User
+  # POST /User.json
   def create
-    @user = Users.new(user_params)
+    @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'Users was successfully created.' }
+        format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -37,12 +37,12 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
+  # PATCH/PUT /User/1
+  # PATCH/PUT /User/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Users was successfully updated.' }
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -51,12 +51,12 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
+  # DELETE /User/1
+  # DELETE /User/1.json
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'Users was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = Users.find(params[:id])
+      @user = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

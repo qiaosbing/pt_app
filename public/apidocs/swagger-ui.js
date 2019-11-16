@@ -14157,27 +14157,27 @@ var baseEach = require('../internal/baseEach'),
  * @returns {*} Returns the matched element, else `undefined`.
  * @example
  *
- * var users = [
+ * var User = [
  *   { 'user': 'barney',  'age': 36, 'active': true },
  *   { 'user': 'fred',    'age': 40, 'active': false },
  *   { 'user': 'pebbles', 'age': 1,  'active': true }
  * ];
  *
- * _.result(_.find(users, function(chr) {
+ * _.result(_.find(User, function(chr) {
  *   return chr.age < 40;
  * }), 'user');
  * // => 'barney'
  *
  * // using the `_.matches` callback shorthand
- * _.result(_.find(users, { 'age': 1, 'active': true }), 'user');
+ * _.result(_.find(User, { 'age': 1, 'active': true }), 'user');
  * // => 'pebbles'
  *
  * // using the `_.matchesProperty` callback shorthand
- * _.result(_.find(users, 'active', false), 'user');
+ * _.result(_.find(User, 'active', false), 'user');
  * // => 'fred'
  *
  * // using the `_.property` callback shorthand
- * _.result(_.find(users, 'active'), 'user');
+ * _.result(_.find(User, 'active'), 'user');
  * // => 'barney'
  */
 var find = createFind(baseEach);
@@ -14335,13 +14335,13 @@ var arrayMap = require('../internal/arrayMap'),
  * _.map({ 'a': 1, 'b': 2 }, timesThree);
  * // => [3, 6] (iteration order is not guaranteed)
  *
- * var users = [
+ * var User = [
  *   { 'user': 'barney' },
  *   { 'user': 'fred' }
  * ];
  *
  * // using the `_.property` callback shorthand
- * _.map(users, 'user');
+ * _.map(User, 'user');
  * // => ['barney', 'fred']
  */
 function map(collection, iteratee, thisArg) {
@@ -17179,13 +17179,13 @@ var baseClone = require('../internal/baseClone'),
  * @returns {*} Returns the deep cloned value.
  * @example
  *
- * var users = [
+ * var User = [
  *   { 'user': 'barney' },
  *   { 'user': 'fred' }
  * ];
  *
- * var deep = _.cloneDeep(users);
- * deep[0] === users[0];
+ * var deep = _.cloneDeep(User);
+ * deep[0] === User[0];
  * // => false
  *
  * // using a customizer callback
@@ -21309,7 +21309,7 @@ exports.set = function(field, val){
  * Example:
  *
  *      req.get('/')
- *        .unset('Users-Agent')
+ *        .unset('User-Agent')
  *        .end(callback);
  *
  * @param {String} field
@@ -21509,9 +21509,9 @@ exports.send = function(data){
  *
  * Examples:
  *
- *    request('GET', '/users').end(callback)
- *    request('/users').end(callback)
- *    request('/users', callback)
+ *    request('GET', '/User').end(callback)
+ *    request('/User').end(callback)
+ *    request('/User', callback)
  *
  * @param {String} method
  * @param {String|Function} url or callback
@@ -21957,7 +21957,7 @@ window.SwaggerUi.Collections = {};
 window.SwaggerUi.partials = {};
 window.SwaggerUi.utils = {};
 
-// don't break backward compatibility with previous versions and warn users to upgrade their code
+// don't break backward compatibility with previous versions and warn User to upgrade their code
 (function(){
   window.authorizations = {
     add: function() {

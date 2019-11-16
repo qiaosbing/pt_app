@@ -7,39 +7,39 @@ class UsersTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit users_url
-    assert_selector "h1", text: "Users"
+    assert_selector "h1", text: "User"
   end
 
-  test "creating a Users" do
+  test "creating a User" do
     visit users_url
-    click_on "New Users"
+    click_on "New User"
 
     fill_in "Email", with: @user.email
     fill_in "Name", with: @user.name
-    click_on "Create Users"
+    click_on "Create User"
 
-    assert_text "Users was successfully created"
+    assert_text "User was successfully created"
     click_on "Back"
   end
 
-  test "updating a Users" do
+  test "updating a User" do
     visit users_url
     click_on "Edit", match: :first
 
     fill_in "Email", with: @user.email
     fill_in "Name", with: @user.name
-    click_on "Update Users"
+    click_on "Update User"
 
-    assert_text "Users was successfully updated"
+    assert_text "User was successfully updated"
     click_on "Back"
   end
 
-  test "destroying a Users" do
+  test "destroying a User" do
     visit users_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
 
-    assert_text "Users was successfully destroyed"
+    assert_text "User was successfully destroyed"
   end
 end

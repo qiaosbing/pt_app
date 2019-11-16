@@ -3,7 +3,7 @@ class DbModelsJob < ActiveJob::Base
 
   def perform(*args)
 
-    Users.find_each do |user|
+    User.find_each do |user|
       NewsMailer.weekly(user).deliver_now
     end
     @data_arr = []

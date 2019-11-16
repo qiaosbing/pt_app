@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   mount TestV1API => "/api/v1" #API接口
 
 
-  resources :users
+  resources :User
   resources :microposts
   resources :sessions do #用户登录
     get "index_table", on: :collection
