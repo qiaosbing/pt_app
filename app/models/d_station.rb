@@ -1,3 +1,0 @@
-class DStation < ApplicationRecord
-
-end
