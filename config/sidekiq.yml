@@ -2,6 +2,5 @@
 :concurrency: 2 # 并发数
 :timeout: 10
 :queues:
-  - air # 写在队列参数中的, 表示让 sidekiq 处理这个 queue
 development:
 :concurrency: 10
