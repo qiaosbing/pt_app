@@ -1,6 +1,7 @@
 class UserWorker
   include Sidekiq::Worker
   include Sidetiq::Schedulable
+  sidekiq_options :queue => :air
 
   #每隔五分钟执行一次
   recurrence do
