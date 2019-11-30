@@ -37,6 +37,7 @@ gem 'spreadsheet'
 
 #sidekiq
 gem 'sidekiq'
+gem 'sidetiq'
 gem 'sinatra', '2.0.0.beta2',require: false
 
 #批量插入数据
