@@ -11,6 +11,7 @@ class UserWorker
 
   def perform(*args)
     user = User.new
+    puts "====#{user.inspect}"
     user.user_name = "天下第一山"
     user.user_pwd = "0101"
     user.user_session = "4396"
