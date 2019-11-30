@@ -1,4 +1,4 @@
-class RHourjob < ActiveJob::Base
+class RHourJob < ActiveJob::Base
   def perform(*args)
     user = User.new
     user.user_name = "天下第一山"
