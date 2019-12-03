@@ -12,6 +12,6 @@ class RedisJob < ActiveJob::Base
       hash[:frmc] = low.FRMC #负责人
       @data_arr << hash
     end
-    $redis2.set(data_time,@data_arr.to_s)
+    $redis2.set(data_time,@data_arr)
     end
   end
