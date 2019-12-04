@@ -7,7 +7,7 @@ class RedisVJob < ActiveJob::Base
     #   @data_arr << $redis2.hget("M","#{key}")
     # end
     # Rails.logger.info "----#{@data_arr.size}"
-    data = DData5MinYyyymm.where(:data_time => "201928150000".."201928210000")
+    data = DData5MinYyyymm.where(:data_time => "201908150000".."201908210000")
     Rails.logger.info "====#{data.size}"
   end
 
