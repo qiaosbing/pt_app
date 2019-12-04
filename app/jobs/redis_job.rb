@@ -7,7 +7,7 @@ class RedisJob < ActiveJob::Base
     while time_beg <= time_end
       data_time = time_beg + 1.day
       Rails.logger.info "=3==#{data_time}"
-
-    end
+      time_beg + 1.day
     end
   end
+end
