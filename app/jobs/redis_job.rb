@@ -17,8 +17,9 @@ class RedisJob < ActiveJob::Base
       datas = DData5MinYyyymm.where(:data_time => s_brg.strftime('%Y%m%d%H%M')..s_end.strftime('%Y%m%d%H%M'))
       @data_arr = []
       datas.each do |da|
-       Rails.logger.info "====#{da}"
+        @data_arr << da
       end
+      Rails.logger.info "====#{@data_arr}"
       #$redis2.hset("M", time.strftime('%Y%m%d'), "#{datas}")
     end
   end
