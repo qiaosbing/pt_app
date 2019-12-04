@@ -4,14 +4,10 @@ class RedisJob < ActiveJob::Base
   def perform(*args)
     time_beg = "20190715".to_time
     time_end = Time.now
-    time_1 =  time_beg.strftime('%Y%m%d')
-    time_2 =  time_end.strftime('%Y%m%d')
-    Rails.logger.info "==0=#{time_1}"
-    Rails.logger.info "==1=#{time_2}"
+    while time_beg <= time_end
+      data_time = time_beg + 1.day
+      Rails.logger.info "=3==#{data_time}"
 
-
-
-    day =  time_2.to_i - time_1.to_i
-    Rails.logger.info "=3==#{day}"
+    end
     end
   end
