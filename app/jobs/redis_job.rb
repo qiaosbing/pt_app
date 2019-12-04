@@ -12,11 +12,7 @@ class RedisJob < ActiveJob::Base
     @data_arr = []
     @top5_data_times.each do |time|
       datas = DData5MinYyyymm.where(:data_time => time.strftime('%Y%m%d%H00')..time.strftime('%Y%m%d%H55'))
-      @data_arr = []
-      datas.each do |da|
-        @data_arr << da
-      end
-      $redis2.hset("M", time.strftime('%Y%m%d%H'), "#{@data_arr}")
+      $redis2.hset("M", time.strftime('%Y%m%d%H'), "#{datas}")
     end
   end
 end
