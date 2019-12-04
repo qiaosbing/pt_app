@@ -6,8 +6,12 @@ class RedisJob < ActiveJob::Base
     time_end = Time.now
     time_1 =  time_beg.strftime('%Y%m%d')
     time_2 =  time_end.strftime('%Y%m%d')
+    Rails.logger.info "==0=#{time_1}"
+    Rails.logger.info "==1=#{time_2}"
+
+
 
     day =  time_2.to_i - time_1.to_i
-    Rails.logger.info "===#{day}"
+    Rails.logger.info "=3==#{day}"
     end
   end
