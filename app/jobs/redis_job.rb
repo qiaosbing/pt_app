@@ -19,8 +19,7 @@ class RedisJob < ActiveJob::Base
       datas.each do |da|
         @data_arr << da
       end
-      Rails.logger.info "====#{@data_arr}"
-      #$redis2.hset("M", time.strftime('%Y%m%d'), "#{datas}")
+      $redis2.hset("M", time.strftime('%Y%m%d'), @data_arr)
     end
   end
 end
