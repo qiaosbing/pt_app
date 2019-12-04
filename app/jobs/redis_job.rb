@@ -9,11 +9,16 @@ class RedisJob < ActiveJob::Base
       time_beg = time_beg + 1.hour
     end
 
+    Rails.logger.info "=====#{@top5_data_times.inspect}"
     @data_arr = []
     @top5_data_times.each do |time|
       datas = DData5MinYyyymm.where(:data_time => time.strftime('%Y%m%d%H00')..time.strftime('%Y%m%d%H55'))
+      @data_arr = []
+      datas.each do |data|
+        @data_arr << data
+      end
       $redis2.hset("M", time.strftime('%Y%m%d%H'), "#{datas}")
-      $redis2.expire("M",300)
+      $redis2.expire("M",300) #设置key存在时间
     end
   end
 end
