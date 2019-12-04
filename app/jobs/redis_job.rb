@@ -13,6 +13,7 @@ class RedisJob < ActiveJob::Base
     @top5_data_times.each do |time|
       datas = DData5MinYyyymm.where(:data_time => time.strftime('%Y%m%d%H00')..time.strftime('%Y%m%d%H55'))
       $redis2.hset("M", time.strftime('%Y%m%d%H'), "#{datas}")
+      $redis2.expire("M",300)
     end
   end
 end
