@@ -9,8 +9,7 @@ class UserWorker
 
 
   def perform(*args)
-    low = LowEnforcementParameter.all
-    data_time = Time.now.strftime("%Y%m%d%H%M")
+    low = DData5MinYyyymm.where()
     @data_arr = []
     low.each do |low|
       hash = {}
