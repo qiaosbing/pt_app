@@ -1,5 +1,12 @@
-class RedisJob < ActiveJob::Base
-  require "redis"
+class UserWorker
+  include Sidekiq::Worker
+  include Sidetiq::Schedulable
+
+  #每隔五分钟执行一次
+  recurrence do
+    minutely(5)
+  end
+
 
   def perform(*args)
     low = LowEnforcementParameter.all
@@ -12,5 +19,6 @@ class RedisJob < ActiveJob::Base
       @data_arr << hash
     end
     $redis2.hset("M",data_time,"#{@data_arr}")
-    end
   end
+
+end
