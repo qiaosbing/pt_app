@@ -1,7 +1,7 @@
 class RedisJob < ActiveJob::Base
 
   def perform(*args)
-    time_beg = "20190803".to_time
+    time_beg = "20190826".to_time
     time_end = "20190831".to_time
     @top5_data_times = []
     while time_beg <= time_end
