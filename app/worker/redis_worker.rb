@@ -9,24 +9,23 @@ class UserWorker
 
 
   def perform(*args)
-    time_beg = "20190715".to_time
-    time_end = Time.now
-    time_1 =  time_beg.strftime('%Y%m%d%H')
-    time_2 =  time_end.strftime('%Y%m%d%H')
+    time_beg = "20190801".to_time
+    time_end = "20190802".to_time
+    @top5_data_times = []
+    while time_beg <= time_end
+      @top5_data_times << time_beg
+      time_beg = time_beg + 1.day
+    end
 
-    day =  time_2.to_i - time_1.to_i
-    Rails.logger.info "===#{day}"
 
-      # low_min = DData5MinYyyymm.all
-    # low_min.select {|x|}
-    # @data_arr = []
-    # low.each do |low|
-    #   hash = {}
-    #   hash[:name] = low.JCDWMC #企业名称
-    #   hash[:frmc] = low.FRMC #负责人
-    #   @data_arr << hash
-    # end
-    # $redis2.hset("M",data_time,"#{@data_arr}")
+    low_min = DData5MinYyyymm.all #获取分钟数据
+    @data_arr = []
+    @top5_data_times.each do |time|
+      s_brg = time.beginning_of_day #今天的开始时间
+      s_end = time.at_end_of_day #今天的结束时间
+      datas = low_min.where(:data_time => s_brg.strftime('%Y%m%d%H%M')..s_end.strftime('%Y%m%d%H%M'))
+      $redis2.hset("M", time.strftime('%Y%m%d'), "#{datas}")
+    end
   end
 
 end
