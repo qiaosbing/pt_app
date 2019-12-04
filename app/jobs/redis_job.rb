@@ -2,15 +2,12 @@ class RedisJob < ActiveJob::Base
   require "redis"
 
   def perform(*args)
-    low = LowEnforcementParameter.all
-    data_time = Time.now.strftime("%Y%m%d%H%M")
-    @data_arr = []
-    low.each do |low|
-      hash = {}
-      hash[:name] = low.JCDWMC #企业名称
-      hash[:frmc] = low.FRMC #负责人
-      @data_arr << hash
-    end
-    $redis2.hset("M",data_time,"#{@data_arr}")
+    time_beg = "20190715".to_time
+    time_end = Time.now
+    time_1 =  time_beg.strftime('%Y%m%d%H')
+    time_2 =  time_end.strftime('%Y%m%d%H')
+
+    day =  time_2.to_i - time_1.to_i
+    Rails.logger.info "===#{day}"
     end
   end
