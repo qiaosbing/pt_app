@@ -6,7 +6,7 @@ class ReadJsonJob < ActiveJob::Base
     data_min = DData5MinYyyymm.where(:data_time => data_time.strftime('%Y%m%d%H00')..data_time.strftime('%Y%m%d%H55'))
     @data_arr = []
     data_min.each do |min|
-      @data_arr << min.to_json
+      @data_arr << min
     end
     Rails.logger.info "====#{@data_arr.inspect}"
 
