@@ -12,7 +12,7 @@ class ReadJsonJob < ActiveJob::Base
     file_path = "#{Rails.root}/public/json" #json文件路径
     FileUtils.mkdir_p(file_path) unless File.exist?(file_path) #文件不存在则创建
 
-    File.open(Rails.root.join("#{file_path}", json_name), 'wb') {|f| f.write(data_min)}
+    File.open(Rails.root.join("#{file_path}", json_name), 'wb') {|f| f.write(@data_arr)}
 
     # #读取json文件数据
     # data_json = File.read("#{Rails.root}/public/json/json_min.json")
