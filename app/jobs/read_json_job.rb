@@ -16,7 +16,7 @@ class ReadJsonJob < ActiveJob::Base
 
     #读取json文件数据
     data_json = File.read("#{Rails.root}/public/json/json_min.json")
-    eval(data_json) #解析数据据
+    data_json =  eval(data_json) #解析数据据
 
     @data_arr = []
     data_json.each do |json|
