@@ -8,7 +8,6 @@ class RedisVJob < ActiveJob::Base
       data = eval(datas)
       s_data = data.first(5)
       Rails.logger.info "----#{s_data.inspect}"
-
     end
   end
 
