@@ -10,13 +10,13 @@ class ReadJsonJob < ActiveJob::Base
       @data_arr << min.to_json
     end
     d_size = open_data(@data_arr)
-    Rails.logger.info "====#{d_size.inspect}"
+    Rails.logger.info "==储存数据的字节==#{d_size.inspect}"
 
       # #读取文件的路径
     # url = "#{Rails.root}/public/json/json_min.json"
     # #调用方法获取数据
     # data = read_data(url)
-    # Rails.logger.info "====#{data.inspect}"
+    # Rails.logger.info "==读取的数据==#{data.inspect}"
   end
 
   #读取json文件
