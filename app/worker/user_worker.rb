@@ -7,8 +7,7 @@ class UserWorker
     minutely(5)
   end
 
-
   def perform(*args)
-
+    SocketPustJob.perform_now()
   end
 end
