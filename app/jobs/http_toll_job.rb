@@ -6,7 +6,7 @@ class HttpTollJob < ActiveJob::Base
     dataTime = Time.now.strftime("Y%m%d")
     dataType = "2"
     datas = {"stationCodes": stationCodes,"dataTime":dataTime,"dataType":dataType}
-    d_headers = {'Authorization': 'wuzhongYCSP 1576830296241000 d3V6aG9uZ1lDU1AxNTc2ODI4NzAzNTUxMDAw'}
+    d_headers = {'Authorization': 'wuzhongYCSP 1576835818353000 ttN9KaRLVF9vtvE8chXBXK+ni8bfJRztVadUzs9JpcA='}
     datas = RestClient.post 'http://dpt.daqi110.com/gateway/getData/air/wf/air/data/getStationData', datas.to_json, headers = d_headers
     data_arr = JSON.parse(datas.body)
     Rails.logger.info "=====#{data_arr.inspect}"
