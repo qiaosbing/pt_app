@@ -40,6 +40,9 @@ gem 'sidekiq'
 gem 'sidetiq'
 gem 'sinatra', '2.0.0.beta2',require: false
 
+#http请求
+gem 'rest-client'
+
 #批量插入数据
 gem 'bulk_insert'
 
