@@ -1,6 +1,6 @@
-class Ruby
-  require "rest-client"
+require "rest-client"
 
+class Ruby
   stationCodes = "S6403000001"
   dataTime = Time.now.strftime("%Y%m%d%H")
   dataType = "1"
