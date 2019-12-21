@@ -1,5 +1,5 @@
 class HttpTollJob < ActiveJob::Base
-  require 'rjb'
+  require 'java'
 
   def perform(*args)
 

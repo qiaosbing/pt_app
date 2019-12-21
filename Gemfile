@@ -53,7 +53,6 @@ gem 'kafka_replicator'
 gem 'redis'
 
 gem 'java'
-
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
