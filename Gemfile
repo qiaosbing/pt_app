@@ -52,6 +52,8 @@ gem 'kafka_replicator'
 #redis连接
 gem 'redis'
 
+#rjb
+gem 'rjb', '~> 1.6', '>= 1.6.1'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
