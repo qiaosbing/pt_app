@@ -14,4 +14,4 @@ class Ruby
   end
 end
 
-
+Ruby.start
