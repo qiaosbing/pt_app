@@ -1,10 +1,11 @@
 class HttpTollJob < ActiveJob::Base
-  require 'java'
-  require '/root/java/wz_lkjh-1.0-SNAPSHOT.jar'
-  def perform(*args)
-    java_import 'com.logstash.Main'
-    Main.exce(es_datas)
+  require "rjb"
 
+  def perform(*args)
+    Rjb::load(classpath = '.:/root/java/wz_lkjh-1.0-SNAPSHOT.jar', jvmargs=[])
+    tararchive = Rjb::import('com.wz.main.ceshi')
+
+    Rails.logger.info "----#{tararchive.inspect}"
   end
 
 end
