@@ -18,7 +18,8 @@ class UserV1Api < Grape::API
   end
   post '/data' do
     user_name = params[:params]
-    Rails.logger.info "===接收到的数据==#{user_name.inspect}"
+    datas = eval(user_name)
+    Rails.logger.info "===接收到的数据==#{datas.inspect}"
 
   end
 
