@@ -55,14 +55,7 @@ class UserV1Api < Grape::API
       hash["avg_tvoc"] = x["avg_tvoc"]
       hash["tvoc_label"] = x["tvoc_label"]
       hash["aqi"] = x["aqi"]
-      @data_arr << hash
-    end
-    Rails.logger.info "======#{@data_arr.inspect}"
-    return {data_err: "数据格式不正确！"} if @data_arr.blank?
-    DDataHourlyYyyy.bulk_insert(update_duplicates: true) do |worker|
-      @data_arr.each do |min_arr|
-        worker.add(min_arr)
-      end
+      DDataHourlyYyyy.create(hash)
     end
     return status = 1
   end
