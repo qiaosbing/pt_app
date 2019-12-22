@@ -16,12 +16,10 @@ class UserV1Api < Grape::API
 
   params do
   end
-  get '/' do
-    data = $redis.get("hash");
-    datas = eval(data)
-    datas = datas["hash"]
-    datas.each do |da|
-    end
+  post '/data' do
+    user_name = params[:params]
+    Rails.logger.info "===接收到的数据==#{user_name.inspect}"
+
   end
 
 end
