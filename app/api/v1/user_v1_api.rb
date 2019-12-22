@@ -21,6 +21,7 @@ class UserV1Api < Grape::API
     return {data_err: "数据为空！"}if user_name.blank? #数据为空则返回[]
     @data_arr = []
     user_name.each do |x|
+      Rails.logger.info "======#{x.inspect}"
       next if !x["station_id"].present?
       hash = {}
       hash["station_id"] = x["station_id"]
