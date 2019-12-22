@@ -18,8 +18,10 @@ class UserV1Api < Grape::API
   end
   post '/data' do
     user_name = params[:params]
-    datas = JSON.parse(user_name)
-    Rails.logger.info "===接收到的数据==#{datas.inspect}"
+    user_name.each do |x|
+      Rails.logger.info "===接收到的数据==#{x.inspect}"
+
+    end
 
   end
 
