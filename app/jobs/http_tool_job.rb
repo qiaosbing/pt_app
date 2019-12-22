@@ -1,4 +1,4 @@
-class HttpToll < ActiveJob::Base
+class HttpTollJob < ActiveJob::Base
 
 
   def perform(*args)
