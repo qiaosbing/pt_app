@@ -55,6 +55,7 @@ class UserV1Api < Grape::API
       hash["avg_tvoc"] = x["avg_tvoc"]
       hash["tvoc_label"] = x["tvoc_label"]
       hash["aqi"] = x["aqi"]
+      Rails.logger.info "=====#{hash.inspect}"
       DDataHourlyYyyy.create(hash)
     end
     return status = 1
