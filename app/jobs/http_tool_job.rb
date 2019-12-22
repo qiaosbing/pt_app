@@ -7,8 +7,7 @@ class HttpToolJob < ActiveJob::Base
     dataType = "1"
     datas = {"stationCodes": stationCodes,"dataTime":dataTime,"dataType":dataType}
     d_headers = {'Authorization': 'wuzhongYCSP 1577009617472000 iIw2BYUXqjuu+DLqVLTy93hzGZr9yw8g930zN5VkZyM='}
-    datas = RestClient.post 'http://dpt.daqi110.com/gateway/getData/air/wf/air/data/getStationData', datas, headers = d_headers
-    data_arr = JSON.parse(datas.body)
+    datas = RestClient.post 'http://dpt.daqi110.com/gateway/getData/air/wf/air/data/getStationData', datas,  headers: {'Authorization': 'wuzhongYCSP 1577009617472000 iIw2BYUXqjuu+DLqVLTy93hzGZr9yw8g930zN5VkZyM='}
     Rails.logger.info "=====#{data_arr.inspect}"
   end
 
