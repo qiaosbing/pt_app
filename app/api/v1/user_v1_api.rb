@@ -18,7 +18,7 @@ class UserV1Api < Grape::API
   end
   post '/data' do
     user_name = params[:params]
-    return [] if user_name.blank? #数据为空则返回[]
+    return {data_err: "数据为空！"}if user_name.blank? #数据为空则返回[]
     @data_arr = []
     user_name.each do |x|
       next if !x["station_id"].present?
@@ -56,6 +56,7 @@ class UserV1Api < Grape::API
       hash["aqi"] = x["aqi"]
       @data_arr << hash
     end
+    return {data_err: "数据格式不正确！"} if @data_arr.blank?
     DDataHourlyYyyy.bulk_insert(update_duplicates: true) do |worker|
       @data_arr.each do |min_arr|
         worker.add(min_arr)
