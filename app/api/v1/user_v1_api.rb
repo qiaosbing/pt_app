@@ -18,11 +18,13 @@ class UserV1Api < Grape::API
   end
   post '/data' do
     user_name = params[:params]
+    return [] if user_name.blank? #数据为空则返回[]
     user_name.each do |x|
       Rails.logger.info "===接收到的数据==#{x.inspect}"
-
+      Rails.logger.info "===aqi==#{x["aqi"]}"
     end
 
+    return status = 1
   end
 
 end
