@@ -10,7 +10,7 @@ class HttpToolJob < ActiveJob::Base
     @data_arr = []
     datas.each do |d|
       station = d_station.select { |x| x["dz_station_id"] == d["station_id"] }.first
-      next if DDataHourlyYyyy.exists?(station: station.id.to_s, data_time: d["data_time"])
+      next if DDataHourlyYyyy.exists?(station_id: station.id.to_s, data_time: d["data_time"])
       hash = {station_id: station.id.to_s, station_name: station.station_name, data_time: d["data_time"],
               avg_so2: d["avg_so2"], so2_label: d["so2_label"], iaqi_so2: d["iaqi_so2"],
               avg_no2: d["avg_no2"], no2_label: d["no2_label"], iaqi_no2: d["iaqi_no2"],
