@@ -8,7 +8,11 @@ class HttpToolJob < ActiveJob::Base
     d_station = DStation.all
     @data_arr = []
     datas.each do |d|
+      Rails.logger.info "===1t站点 ==#{d.dz_station_id}"
+      Rails.logger.info "===2t站点 ==#{d["station_id"] }"
+
       station = d_station.select { |x| x.dz_station_id == d["station_id"] }
+      Rails.logger.info "===查询的站点 ==#{station.inspect}"
       hash = {station_id: station.id.to_s, station_name: station.staton_name, data_time: d["data_time"],
               avg_so2: d["avg_so2"], so2_label: d["so2_label"], iaqi_so2: d["iaqi_so2"],
               avg_no2: d["avg_no2"], no2_label: d["no2_label"], iaqi_no2: d["iaqi_no2"],
