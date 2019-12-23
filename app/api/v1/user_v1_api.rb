@@ -43,8 +43,8 @@ class UserV1Api < Grape::API
               avg_tvoc: x["avg_tvoc"],tvoc_label:x["tvoc_label"]}
 
       #获取aqi数据
-      aqi = x["aqi"]
-      if aqi.present? && aqi >= 0
+      aqi = x["aqi"].to_f
+      if aqi.present? && aqi > 0
         Rails.logger.info "=====#{aqi}"
         level = SAqiLevel.find_by_aqi(aqi)
         hash[:aqi] = aqi
