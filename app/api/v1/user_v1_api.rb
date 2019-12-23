@@ -20,7 +20,7 @@ class UserV1Api < Grape::API
     user_name = params[:params]
     return {data_err: "数据为空！"}if user_name.blank? #数据为空则返回[]
     d_station = DStation.where(:station_type => "15") #获取站点信息
-    Rails.logger.inif "====#{d_station.inspect}"
+    Rails.logger.info "====#{d_station.inspect}"
     @data_arr = []
     user_name.each do |x|
       Rails.logger.info "====#{x.inspect}"
