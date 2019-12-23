@@ -19,12 +19,16 @@ class UserV1Api < Grape::API
   post '/data' do
     user_name = params[:params]
     return {data_err: "数据为空！"}if user_name.blank? #数据为空则返回[]
+    d_station = DStation.where(:station_type => "15") #获取站点信息
+    Rails.logger.inif "====#{d_station.inspect}"
     @data_arr = []
     user_name.each do |x|
-      Rails.logger.info "======#{x.inspect}"
-      next if !x["station_id"].present?
+      Rails.logger.inif "====#{x.inspect}"
       hash = {}
-      hash[:station_id] = x["station_id"]
+      station = d_station.select{|x| x.dz_station_id == x["station_id"]}.first
+      next if !station.present?
+      hash[:station_id] = station.id
+      hash[:station_name] = station.station_name
       hash[:data_time] = x["data_time"]
       hash[:avg_so2] = x["so2"]
       hash[:so2_label] = x["so2_label"]
