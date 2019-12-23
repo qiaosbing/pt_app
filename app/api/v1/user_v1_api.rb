@@ -26,9 +26,9 @@ class UserV1Api < Grape::API
     user_name.each do |x|
       hour = DDataHourlyYyyy.new
       #station = d_station.select { |x| x.dz_station_id == x["station_id"] }.first
-      station = DStation.where(:dz_station_id => x["station_id"])
+      station = DStation.find_by(:dz_station_id => x["station_id"])
       next if !station.present?
-      Rails.logger.info "========#{station["id"].to_s}"
+      Rails.logger.info "========#{station.id}"
       hour.station_id = station["id"].to_s
       hour.station_name = station["station_name"]
       hour.data_time = x["data_time"]
