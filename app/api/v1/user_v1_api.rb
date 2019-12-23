@@ -45,6 +45,7 @@ class UserV1Api < Grape::API
       #获取aqi数据
       aqi = x["aqi"].to_s
       if aqi.present? && aqi != "null"
+        Rails.logger.info "====#{aqi}"
         level = SAqiLevel.find_by_aqi(aqi)
         hash[:aqi] = aqi
         hash[:chief_pollutant] = x["chief_pollutant"] #首要污染物
