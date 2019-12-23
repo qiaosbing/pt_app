@@ -25,6 +25,7 @@ class UserV1Api < Grape::API
       Rails.logger.info "========#{x["station_id"]}---------#{x["station_id"].class}"
       hour =  DDataHourlyYyyy.new
       station = d_station.select { |x| x.dz_station_id == x["station_id"] }.first
+      next if !station.present?
       Rails.logger.info "===查询的数据=#{station.inspect}"
       hour.station_id = station.id
       hour.station_name = station.station_name
