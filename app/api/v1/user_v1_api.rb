@@ -22,6 +22,7 @@ class UserV1Api < Grape::API
     d_station = DStation.where(:station_type => "15") #获取站点信息
     @data_arr = []
     user_name.each do |x|
+      Rails.logger.info "=====#{x.inspect}"
       #筛选站点
       station_id = x["station_id"]
       station = d_station.select { |x| x.dz_station_id == station_id }.first
