@@ -24,11 +24,11 @@ class UserV1Api < Grape::API
     Rails.logger.info "========#{d}"
     @data_arr = []
     user_name.each do |x|
-      Rails.logger.info "========#{x["station_id"]}---------#{x["station_id"].class}"
       hour = DDataHourlyYyyy.new
       #station = d_station.select { |x| x.dz_station_id == x["station_id"] }.first
       station = DStation.where(:dz_station_id => x["station_id"])
       next if !station.present?
+      Rails.logger.info "========#{station.inspect}"
       hour.station_id = station.id
       hour.station_name = station.station_name
       hour.data_time = x["data_time"]
