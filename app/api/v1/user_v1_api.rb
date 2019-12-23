@@ -44,6 +44,7 @@ class UserV1Api < Grape::API
 
       #获取aqi数据
       aqi = x["aqi"]
+      Rails.logger.info "=====#{aqi}"
       if x["aqi"] != nil && x["aqi"] != 0
         level = SAqiLevel.find_by_aqi(aqi)
         hash[:aqi] = aqi
@@ -52,7 +53,7 @@ class UserV1Api < Grape::API
         hash[:aqi_class] = level.aqi_class
         hash[:aqi_color] = level.aqi_color
       end
-      DDataHourlyYyyy.create(hash)
+      #DDataHourlyYyyy.create(hash)
     end
     return status = 1
   end
