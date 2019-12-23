@@ -23,7 +23,7 @@ class UserV1Api < Grape::API
     Rails.logger.inif "====#{d_station.inspect}"
     @data_arr = []
     user_name.each do |x|
-      Rails.logger.inif "====#{x.inspect}"
+      Rails.logger.info "====#{x.inspect}"
       hash = {}
       station = d_station.select{|x| x.dz_station_id == x["station_id"]}.first
       next if !station.present?
