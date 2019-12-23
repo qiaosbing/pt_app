@@ -44,7 +44,7 @@ class UserV1Api < Grape::API
 
       #获取aqi数据
       aqi = x["aqi"]
-      if aqi.present? && aqi != null
+      if aqi.present? && aqi >= 0
         Rails.logger.info "=====#{aqi}"
         level = SAqiLevel.find_by_aqi(aqi)
         hash[:aqi] = aqi
