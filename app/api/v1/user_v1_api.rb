@@ -29,7 +29,7 @@ class UserV1Api < Grape::API
       station = DStation.where(:dz_station_id => x["station_id"])
       next if !station.present?
       Rails.logger.info "========#{station.inspect}"
-      hour.station_id = station["id"]
+      hour.station_id = station["id"].to_s
       hour.station_name = station["station_name"]
       hour.data_time = x["data_time"]
       hour.save
