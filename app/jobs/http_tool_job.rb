@@ -11,11 +11,11 @@ class HttpToolJob < ActiveJob::Base
       station = d_station.select { |x| x["dz_station_id"] == d["station_id"] }.first
       next if DDataHourlyYyyy.exists?(station_id: station.id.to_s, data_time: d["data_time"])
       hash = {station_id: station.id.to_s, station_name: station.station_name, data_time: d["data_time"],
-              avg_so2: d["avg_so2"], so2_label: d["so2_label"], iaqi_so2: d["iaqi_so2"],
-              avg_no2: d["avg_no2"], no2_label: d["no2_label"], iaqi_no2: d["iaqi_no2"],
-              avg_co: d["avg_co"], co_label: d["co_label"], iaqi_co: d["iaqi_co"],
-              avg_o3: d["avg_o3"], o3_label: d["o3_label"], iaqi_o3: d["iaqi_o3"],
-              avg_pm10: d["avg_pm10"], pm10_label: d["pm10_label"], iaqi_ma24_pm10: d["iaqi_ma24_pm10"],
+              avg_so2: d["so2"], so2_label: d["so2_label"], iaqi_so2: d["iaqi_so2"],
+              avg_no2: d["no2"], no2_label: d["no2_label"], iaqi_no2: d["iaqi_no2"],
+              avg_co: d["co"], co_label: d["co_label"], iaqi_co: d["iaqi_co"],
+              avg_o3: d["o3"], o3_label: d["o3_label"], iaqi_o3: d["iaqi_o3"],
+              avg_pm10: d["pm10"], pm10_label: d["pm10_label"], iaqi_ma24_pm10: d["iaqi_ma24_pm10"],
               avg_pm25: d["pm25_label"], pm25_label: d["pm25_label"], iaqi_ma24_pm25: d["iaqi_ma24_pm25"],
               avg_tvoc: d["avg_tvoc"], tvoc_label: d["tvoc_label"],
               windspeed: d["windspeed"], windspeed_label: d["windspeed_label"],
