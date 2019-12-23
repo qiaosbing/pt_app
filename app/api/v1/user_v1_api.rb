@@ -20,15 +20,14 @@ class UserV1Api < Grape::API
     user_name = params[:params]
     return {data_err: "数据为空！"} if user_name.blank? #数据为空则返回[]
     d_station = DStation.where(:station_type => "15") #获取站点信息
-    d = d_station.map { |x| x.dz_station_id }
     Rails.logger.info "========#{d}"
     @data_arr = []
     user_name.each do |x|
       hour = DDataHourlyYyyy.new
-      #station = d_station.select { |x| x.dz_station_id == x["station_id"] }.first
-      station = DStation.find_by(:dz_station_id => x["station_id"])
+      station = d_station.select { |x| x["dz_station_id"] == x["station_id"] }.first
+      Rails.logger.info "========#{station.inspect}"
+      #station = DStation.find_by(:dz_station_id => x["station_id"])
       next if !station.present?
-      Rails.logger.info "========#{station.id}"
       hour.station_id = station["id"].to_s
       hour.station_name = station["station_name"]
       hour.data_time = x["data_time"]
