@@ -26,7 +26,8 @@ class UserV1Api < Grape::API
       #筛选站点
       station_id = x["station_id"]
       station = d_station.select { |x| x.dz_station_id == station_id }.first
-      next if !station.present? && !x["aqi"].present?
+      next if !station.present?
+      next if !x["aqi"].present?
 
 
       #封装数据
