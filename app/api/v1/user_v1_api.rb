@@ -23,12 +23,12 @@ class UserV1Api < Grape::API
     @data_arr = []
     user_name.each do |x|
       Rails.logger.info "====#{x.inspect}"
-      hash = {}
+      hour =  DDataHourlyYyyy.new
       station = d_station.select { |x| x.dz_station_id == x["station_id"] }.first
-      hash[:station_id] = station.id
-      hash[:station_name] = station.station_name
-      hash[:data_time] = x["data_time"]
-
+      hour.station_id = station.id
+      hour.station_name = station.station_name
+      hour.data_time = x["data_time"]
+      hour.save
       # hash = {}
       # next if !station.present?
       # hash[:station_id] = station.id
@@ -63,7 +63,6 @@ class UserV1Api < Grape::API
       # hash[:tvoc_label] = x["tvoc_label"]
       # hash[:aqi] = x["aqi"]
       # Rails.logger.info "=====#{hash.inspect}"
-      DDataHourlyYyyy.create(hash)
     end
     return status = 1
   end
