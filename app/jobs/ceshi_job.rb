@@ -5,12 +5,13 @@ class CeshiJob < ActiveJob::Base
     #datas = RestClient.get 'http://106.54.8.7:8080/data_hour'
     datas = RestClient::Request.execute(method: :get, url: 'http://106.54.8.7:8080/data_day',
                                         timeout: 10)
-    req_data = JSON.parse(datas.body)
-    d_station = DStation.all
     Rails.logger.info "=====#{datas.inspect}"
+    if datas.present?
+      req_data = JSON.parse(datas.body)
+      d_station = DStation.all
 
-    @data_arr = []
-    if req_data.present?
+      @data_arr = []
+
       ##封装数据
       req_data.each do |d|
         station = d_station.select { |x| x["dz_station_id"] == d["station_id"] }.first
