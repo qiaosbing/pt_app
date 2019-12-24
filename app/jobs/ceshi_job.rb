@@ -7,7 +7,7 @@ class CeshiJob < ActiveJob::Base
                                         timeout: 10)
     req_data = JSON.parse(datas.body)
     d_station = DStation.all
-
+    Rails.logger.info "---#{req_data.inspect}"
     @data_arr = []
     if req_data.present?
       ##封装数据
