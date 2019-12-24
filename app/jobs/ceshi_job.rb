@@ -2,7 +2,9 @@ class CeshiJob < ActiveJob::Base
 
 
   def perform(*args)
-    datas = RestClient.get 'http://106.54.8.7:8080/data_min'
+    #datas = RestClient.get 'http://106.54.8.7:8080/data_min'
+    datas = RestClient::Request.execute(method: :get, url: 'http://106.54.8.7:8080/data_min',
+                                        timeout: 10)
     req_data = JSON.parse(datas.body)
     d_station = DStation.all
 
