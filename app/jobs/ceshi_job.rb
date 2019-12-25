@@ -5,8 +5,7 @@ class CeshiJob < ActiveJob::Base
     #datas = RestClient.get 'http://106.54.8.7:8080/data_hour'
     datas = RestClient::Request.execute(method: :get, url: 'http://106.54.8.7:8080/data_day',
                                         timeout: 10)
-    Rails.logger.info "=====#{datas.inspect}"
-    if datas.present?
+    if req_data.present?
       req_data = JSON.parse(datas.body)
       d_station = DStation.all
 
